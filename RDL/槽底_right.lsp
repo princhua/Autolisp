@@ -1,0 +1,18 @@
+(defun c:2ttt()
+	(setq p1(getpoint"choose PAD1:"))
+	(setq dis1(getdist p1"choose PAD top dis1:"))
+	(setq dis2(getdist p1"choose PAD bottomt dis2:"))
+	(setq apt1(polar p1 (* pi 0.5) (-(* 0.5 dis1) 20)))
+	(setq apt2(polar p1 (* pi 1.5) (-(* 0.5 dis2) 20)))
+	(setq pt1(polar apt1 (* pi 1) 175))
+	(setq pt2(polar apt2 (* pi 1) 175))
+	(setq pt3(polar apt1 (* pi 0) 134))
+	(setq pt4(polar apt2 (* pi 0) 134))
+
+
+	(setq osm (getvar "osmode"))
+	(setvar "osmode" 0)
+	(command "pline" pt1 pt3 pt4 pt2 "")
+	(setvar "osmode" osm)
+	(princ)
+)
